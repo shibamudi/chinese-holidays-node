@@ -24,19 +24,19 @@ const ChineseHolidays = {
   ready(cb) {
     // priority: online data => offline data => bundled data
     return new Promise((resolve) => {
-      Cache.events().then((events) => {
-        const book = new Book(events);
-        resolve(book);
-        if (_isFunction(cb)) {
-          cb(book, null);
-        }
-      }).catch(() => {
+      // Cache.events().then((events) => {
+      //   const book = new Book(events);
+      //   resolve(book);
+      //   if (_isFunction(cb)) {
+      //     cb(book, null);
+      //   }
+      // }).catch(() => {
         const book = new Book(Bundled.events());
         resolve(book);
         if (_isFunction(cb)) {
           cb(book, null);
         }
-      });
+      // });
     });
   },
 };
